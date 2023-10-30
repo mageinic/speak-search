@@ -1,0 +1,30 @@
+{
+    "name": "mageinic/speaksearch",
+    "description": "SpeakSearch extension launched by MageINIC team is perfect solution that improves your searching system.",
+    "type": "magento2-module",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "version": "1.0.0",
+    "require": {
+        "php": "^8.0",
+        "mageinic/core": "1.0.*",
+        "magento/module-search": "101.1.*"
+    },
+    "authors": [
+        {
+            "name": "MageINIC",
+            "email": "support@mageinic.com",
+            "homepage": "https://www.mageinic.com"
+        }
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "MageINIC\\SpeakSearch\\": ""
+        }
+    }
+}

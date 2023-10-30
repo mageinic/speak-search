@@ -1,0 +1,64 @@
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_SpeakSearch
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+.form.minisearch {
+    display: flex;
+    width: 100%;
+    flex: 0 0 100%;
+}
+
+.form.minisearch .field.search {
+    display: flex;
+    width: 100%;
+}
+
+.form.minisearch .field.search .control {
+    display: flex;
+    flex-direction: row-reverse;
+    position: relative;
+    width: 100%;
+}
+
+.form.minisearch .field.search .control .speak-icon {
+    position: absolute;
+    width: 22px;
+    top: 5px;
+    left: 3px;
+}
+
+.block-search .mageinic-voice-search input {
+    padding-inline: 30px !important;
+    font-size: 15px;
+}
+
+.form.minisearch .actions {
+    position: absolute;
+    right: 5px;
+}
+.block-search .mageinic-voice-search input.speak{
+    padding-inline: 9px !important;
+}
+#voice-search-trigger {
+    display: none;
+}

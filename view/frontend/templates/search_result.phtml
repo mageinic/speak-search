@@ -1,0 +1,103 @@
+<?php
+/**
+ * MageINIC
+ * Copyright (C) 2023 MageINIC <support@mageinic.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see https://opensource.org/licenses/gpl-3.0.html.
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category MageINIC
+ * @package MageINIC_SpeakSearch
+ * @copyright Copyright (c) 2023 MageINIC (https://www.mageinic.com/)
+ * @license https://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author MageINIC <support@mageinic.com>
+ */
+
+use Magento\Framework\Escaper;
+use Magento\Framework\View\Element\Template;
+use Magento\Search\Helper\Data;
+use Magento\Search\ViewModel\ConfigProvider;
+
+/** @var $helper Data */
+/** @var $block Template */
+/** @var $escaper Escaper */
+/** @var $configProvider ConfigProvider */
+
+$configProvider = $block->getData('configProvider');
+$helper = $configProvider->getSearchHelperData();
+$viewModel = $block->getData('viewModel');
+$enable = $viewModel->getEnable();
+$btnImgUrl = $viewModel->getButtonImgUrl() ? $viewModel->getButtonImgUrl() : '';
+$speakImage = $viewModel->getImage();
+?>
+<div class="block block-search">
+    <div class="block block-title">
+        <strong><?= $escaper->escapeHtml(__('Search')) ?></strong>
+    </div>
+    <div class="block block-content">
+        <?php $class = $enable ? 'mageinic-voice-search' : '' ?>
+
+        <form class="form minisearch <?= $escaper->escapeHtmlAttr($class) ?>" id="search_mini_form"
+              action="<?= $escaper->escapeUrl(__($helper->getResultUrl())) ?>" method="get">
+            <div class="field search">
+                <label class="label" for="search" data-role="minisearch-label">
+                    <span><?= $escaper->escapeHtml(__('Search')) ?></span>
+                </label>
+                <div class="control">
+                    <?php if ($enable): ?>
+                        <?php if (!empty($btnImgUrl)): ?>
+                            <img src="<?= /* @noEscape */ $btnImgUrl ?>" class="speak-icon"
+                                 id="voice-search-trigger"
+                                 alt="<?= $escaper->escapeHtml(__('Voice Search')) ?>"
+                                 width="30px" height="30px"/>
+                        <?php else: ?>
+
+                                <img src="<?=  /* @noEscape */ $speakImage ; ?>" class="speak-icon"
+                                     id="voice-search-trigger"
+                                     alt="<?= $escaper->escapeHtml(__('Voice Search')) ?>"
+                                     width="30px" height="30px"/>
+
+                        <?php endif; ?>
+                    <?php endif; ?>
+                    <input id="search"
+                           data-mage-init='{"quickSearch":{
+                                "formSelector":"#search_mini_form",
+                                "url":"<?= $escaper->escapeUrl($helper->getSuggestUrl()) ?>",
+                                "destinationSelector":"#search_autocomplete"},
+                                "voiceSearch":{}
+                           }'
+                           type="text"
+                           name="<?= $escaper->escapeHtmlAttr($helper->getQueryParamName()) ?>"
+                           value="<?= /* @noEscape */ $helper->getEscapedQueryText() ?>"
+                           placeholder="<?= $escaper->escapeHtmlAttr(__('Search entire store here...')) ?>"
+                           class="input-text"
+                           maxlength="<?= $escaper->escapeHtmlAttr($helper->getMaxQueryLength()) ?>"
+                           role="combobox"
+                           aria-haspopup="false"
+                           aria-autocomplete="both"
+                           autocomplete="off"
+                           aria-expanded="false"/>
+                    <div id="search_autocomplete" class="search-autocomplete"></div>
+                    <?= $block->getChildHtml() ?>
+                </div>
+            </div>
+            <div class="actions">
+                <button type="submit" title="<?= $escaper->escapeHtml(__('Search')) ?>" class="action search">
+                    <span>
+                        <?= $escaper->escapeHtml(__('Search')) ?>
+                    </span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
