@@ -1,5 +1,5 @@
 {
-    "name": "mageinic/speaksearch",
+    "name": "mageinic/speak-search",
     "description": "Speak Search by MageINIC, Speak Search extension brings the power of Voice Search to your online store. With this feature, customers can easily search for products using voice commands, enhancing their shopping experience. A microphone icon near the search box allows users to simply speak their queries, making the search process more intuitive and efficient.",
     "type": "magento2-module",
     "license": [

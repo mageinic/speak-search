@@ -11,7 +11,7 @@
 Run the following command in Magento 2 root folder
 
 ```
-composer require mageinic/speaksearch
+composer require mageinic/speak-search
 
 php bin/magento maintenance:enable
 php bin/magento setup:upgrade
@@ -23,7 +23,7 @@ php bin/magento cache:flush
 
 ## 2. How to use
 
-- Please refer to the `SpeakSearch Extension User Guide.pdf` file for instructions on how to use the extension.
+- Please refer to the `Speak Search Extension User Guide.pdf` file for instructions on how to use the extension.
 
 ## 3. Get Support
 
